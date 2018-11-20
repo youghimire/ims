@@ -1,0 +1,16 @@
+.brand {
+    text-align: center;
+    font-style: italic;
+    font-family: monospace;
+    font-stretch: ultra-condensed;
+    font-size: xx-large;
+}
+.first {
+    
+    color: blue;
+}
+.last {
+    background-color: darkslateblue;
+    
+    color: white;
+}

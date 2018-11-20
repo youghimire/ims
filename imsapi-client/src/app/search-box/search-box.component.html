@@ -1,0 +1,12 @@
+<div>
+  <input #searchBox type="text" class="form-control" placeholder="Search store" (input)="search(searchBox.value)"/>
+
+  <ul class="search-result">
+    <li *ngFor="let item of items$ | async">
+      {{item.name}}
+    </li>
+  </ul>
+
+</div>
+
+
