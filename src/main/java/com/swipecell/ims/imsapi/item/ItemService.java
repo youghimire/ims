@@ -33,7 +33,7 @@ public class ItemService {
 				StringTokenizer tokens = new StringTokenizer(item.getName());
 				while (tokens.hasMoreElements()) {
 					String token = (String) tokens.nextElement();
-					if ( token.startsWith(term)) {
+					if ( token.toLowerCase().startsWith(term.toLowerCase())) {
 						matchingItems.add(item);
 					}
 					

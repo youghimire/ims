@@ -1,5 +1,4 @@
 {
     "baseUrl": "http://localhost:4200",
-    "itemsUrl": "/api/items",
-    
+    "itemsUrl": "/api/items"
 }

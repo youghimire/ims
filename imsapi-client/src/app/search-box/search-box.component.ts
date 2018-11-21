@@ -25,7 +25,7 @@ export class SearchBoxComponent implements OnInit {
     this.items$ = this.searchTerm.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.itemService.searchItems(term))
+      switchMap((term: string) => this.itemService.searchItems(term)),
     );
   }
 

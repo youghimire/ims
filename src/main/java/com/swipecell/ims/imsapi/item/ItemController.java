@@ -48,8 +48,8 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "/items/name={term}")
-	public void searchItem(@PathVariable String term) {
+	public List<Item> searchItem(@PathVariable String term) {
 		System.out.println("search Item with term " + term);
-		itemService.searchItem(term);
+		return itemService.searchItem(term);
 	}
 }

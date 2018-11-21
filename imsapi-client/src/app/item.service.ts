@@ -35,6 +35,14 @@ export class ItemService {
     )
   }
 
+  getItem(id: number): Observable<Item> {
+    const url = `${this.itemsURL}/${id}`;
+    return this.http.get<Item>(url).pipe(
+      tap(_ => this.log(`fetched Item id=${id}`)),
+      catchError(this.handleError<Item>(`getItem id=${id}`))
+    );
+  }
+
   private log(message: string) {
     this.messageService.add(`ItemService: ${message}`);
   }

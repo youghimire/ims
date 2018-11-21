@@ -7,19 +7,23 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageComponent } from './message/message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SellComponent } from './sell/sell.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     StoreNameComponent,
     SearchBoxComponent,
-    MessageComponent
+    MessageComponent,
+    SellComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
   ],
