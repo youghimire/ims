@@ -27,13 +27,13 @@ public class SaleController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sales")
-	public void addSale(@RequestBody Sale sale) {
-		saleService.addSale(sale);
+	public Sale addSale(@RequestBody Sale sale) {
+		return saleService.addSale(sale);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/sales/{id}")
-	public void updateSale(@RequestBody Sale sale, @PathVariable Integer id) {
-		saleService.updateSale(sale);
+	public Sale updateSale(@RequestBody Sale sale, @PathVariable Integer id) {
+		return saleService.updateSale(sale);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/sales/{id}")

@@ -22,13 +22,13 @@ public class SaleService {
 		return saleRepository.findOne(id);
 	}
 
-	public void addSale(Sale sale) {
-		saleRepository.save(sale);
+	public Sale addSale(Sale sale) {
+		return saleRepository.save(sale);
 	}
 
-	public void updateSale(Sale sale) {
+	public Sale updateSale(Sale sale) {
 
-		saleRepository.save(sale);
+		return saleRepository.save(sale);
 	}
 
 	public void deleteSale(Integer id) {

@@ -26,23 +26,19 @@ public class SaleItem {
 	@JoinColumn(name="item_id")
 	private Item item;
 
-	@ManyToOne
-	@JoinColumn(name="sale_id")
-	private Sale sale;
+	
 
 	public SaleItem() {
 		super();
 	}
 
-	public SaleItem(Integer id, Integer quantity, BigDecimal amount, String remark, Item item,
-			Sale sale) {
+	public SaleItem(Integer id, Integer quantity, BigDecimal amount, String remark, Item item) {
 		super();
 		this.id = id;
 		this.quantity = quantity;
 		this.amount = amount;
 		this.remark = remark;
 		this.item = item;
-		this.sale = sale;
 	}
 
 	public Integer getId() {
@@ -85,12 +81,5 @@ public class SaleItem {
 		this.item = item;
 	}
 
-	public Sale getSale() {
-		return sale;
-	}
-
-	public void setSale(Sale sale) {
-		this.sale = sale;
-	}
 
 }

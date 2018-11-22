@@ -1,12 +1,15 @@
 package com.swipecell.ims.imsapi.sales;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Sale {
@@ -18,6 +21,8 @@ public class Sale {
 	private BigDecimal amount;
 	private String billName;
 	private String remark;
+	@OneToMany
+	private List<SaleItem> saleItem = new ArrayList<>();
 
 	public Sale() {
 
@@ -71,5 +76,15 @@ public class Sale {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	public List<SaleItem> getSaleItem() {
+		return saleItem;
+	}
+
+	public void setSaleItem(List<SaleItem> saleItem) {
+		this.saleItem = saleItem;
+	}
+	
+	
 
 }

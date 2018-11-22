@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import{catchError, map, tap} from 'rxjs/operators'
-import { Item } from './item';
+import { Item } from './interfaces';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -30,7 +30,7 @@ export class ItemService {
       return of([]);
     }
     return this.http.get<Item[]>(`${this.itemsURL}/name=${term}`).pipe(
-      tap(_=> this.log(`found items matching "${term}"`)),
+      tap(items=> items.length ? this.log(`found items matching "${term}"`):false),
       catchError(this.handleError<Item[]>('searchItems', []))
     )
   }
@@ -41,6 +41,13 @@ export class ItemService {
       tap(_ => this.log(`fetched Item id=${id}`)),
       catchError(this.handleError<Item>(`getItem id=${id}`))
     );
+  }
+
+  saveItem(item: Item) {
+    this.http.post<Item>(this.itemsURL,item).pipe(
+      tap(_ => this.log(`Saved Item =${item.name}`)),
+      catchError(this.handleError<Item>(`saveItem name: ${item.name}`))
+    ).subscribe(()=>{})
   }
 
   private log(message: string) {

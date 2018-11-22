@@ -15,11 +15,8 @@ public class SaleItemController {
 
 	@Autowired
 	private SaleItemService saleService;
+	
 
-	@RequestMapping("/sales/{saleId}/saleItems")
-	public List<SaleItem> getAllSaleItem(@PathVariable Integer saleId) {
-		return saleService.getAllSaleItem(saleId);
-	}
 
 	@RequestMapping("/saleItems/{id}")
 	public SaleItem getSaleItem(@PathVariable Integer id) {

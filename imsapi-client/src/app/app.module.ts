@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { StoreNameComponent } from './store-name/store-name.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
@@ -9,6 +9,7 @@ import { MessageComponent } from './message/message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SellComponent } from './sell/sell.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AddItemComponent } from './add-item/add-item.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +17,16 @@ import { AppRoutingModule } from './app-routing.module';
     StoreNameComponent,
     SearchBoxComponent,
     MessageComponent,
-    SellComponent
+    SellComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
   ],

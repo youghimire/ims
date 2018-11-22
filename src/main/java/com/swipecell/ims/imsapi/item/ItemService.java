@@ -35,6 +35,7 @@ public class ItemService {
 					String token = (String) tokens.nextElement();
 					if ( token.toLowerCase().startsWith(term.toLowerCase())) {
 						matchingItems.add(item);
+						break;
 					}
 					
 				}

@@ -37,8 +37,4 @@ public class SaleItemService {
 
 	}
 
-	public List<SaleItem> getAllSaleItem(Integer saleId) {
-		return saleItemRepository.findBySaleId(saleId);
-	}
-
 }

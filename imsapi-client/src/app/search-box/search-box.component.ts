@@ -5,6 +5,7 @@ import { Item } from '../item';
 import { ItemService } from '../item.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-box',
@@ -16,10 +17,13 @@ export class SearchBoxComponent implements OnInit {
   items$: Observable<Item[]>;
   private searchTerm = new Subject<string>();
 
-  constructor( private itemService : ItemService) { }
+  constructor( 
+    private itemService : ItemService,
+    private router: Router) { }
 
   search(term: string): void {
     this.searchTerm.next(term);
+   
   }
   ngOnInit() {
     this.items$ = this.searchTerm.pipe(
@@ -27,6 +31,10 @@ export class SearchBoxComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term: string) => this.itemService.searchItems(term)),
     );
+  }
+
+  addItem() {
+    this.router.navigateByUrl('/addItem')
   }
 
 }
