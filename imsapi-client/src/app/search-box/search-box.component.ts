@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ HttpClient  } from '@angular/common/http'
 import { ConfigService } from '../config/config.service';
-import { Item } from '../item';
+import { Item } from '../interfaces';
 import { ItemService } from '../item.service';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';

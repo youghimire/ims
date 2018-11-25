@@ -3,6 +3,7 @@ package com.swipecell.ims.imsapi.sales;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.swipecell.ims.imsapi.item.Item;
 
 @Entity
@@ -23,9 +28,11 @@ public class SaleItem {
 	private String remark;
 
 	@OneToOne
-	@JoinColumn(name="item_id")
 	private Item item;
 
+	@ManyToOne
+	@JoinColumn(name="sale_id", nullable=false)
+	private Sale sale;
 	
 
 	public SaleItem() {

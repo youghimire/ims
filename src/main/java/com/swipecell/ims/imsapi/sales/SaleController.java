@@ -28,6 +28,7 @@ public class SaleController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/sales")
 	public Sale addSale(@RequestBody Sale sale) {
+		System.out.println("Add sale record : " + sale);
 		return saleService.addSale(sale);
 	}
 

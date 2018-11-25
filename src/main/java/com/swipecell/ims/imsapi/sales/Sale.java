@@ -21,7 +21,7 @@ public class Sale {
 	private BigDecimal amount;
 	private String billName;
 	private String remark;
-	@OneToMany
+	@OneToMany(mappedBy="sale")
 	private List<SaleItem> saleItem = new ArrayList<>();
 
 	public Sale() {
