@@ -10,7 +10,7 @@ export interface Sale {
     amount: number;
     billName: string;
     remark: string;
-    saleItem: SaleItem[];
+    saleItems: SaleItem[];
 }
 export interface SaleItem {
     id: number;
@@ -18,4 +18,5 @@ export interface SaleItem {
     amount: number;
     remark: string;
     item: Item;
+    sale: Sale;
 }

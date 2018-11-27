@@ -47,23 +47,13 @@ export class SellComponent implements OnInit {
   }
 
   save() {
-    
-    this.newSaleItem = Object.assign({},this.billingForm.value) ;
-    this.newSaleItem.item = this.item;
-    this.newSaleItem.quantity = 1;
-    
-    // this.newSale.saleItem.push(this.newSaleItem);
-    this.sellService.saveSaleItem(this.newSaleItem)
-    .subscribe(saleItem => this.newSaleItem = saleItem);
-    
-    this.newSale = Object.assign({}, this.billingForm.value);
-    this.newSale.date = new Date();
-    this.newSale.saleItem = new Array<SaleItem>();
-    this.sellService.saveSale(this.newSale)
-    .subscribe(sale => this.newSale = sale);
-    
 
-    console.log(this.newSaleItem);
+    this.newSale = Object.assign({}, this.billingForm.value);
+
+    this.sellService.saveSale(this.newSale, this.item)
+      .subscribe(sale => this.newSale = sale);
+
+
     console.log(this.newSale);
   }
 }

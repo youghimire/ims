@@ -43,6 +43,13 @@ export class ItemService {
     );
   }
 
+  getAllItems(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.itemsURL).pipe(
+      tap(_ => this.log(`fetched all products`)),
+      catchError(this.handleError<Item[]>(`getAllItems`))
+    );
+  }
+
   saveItem(item: Item) {
     this.http.post<Item>(this.itemsURL,item).pipe(
       tap(_ => this.log(`Saved Item =${item.name}`)),

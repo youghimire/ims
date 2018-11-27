@@ -34,7 +34,15 @@ export class SearchBoxComponent implements OnInit {
   }
 
   addItem() {
-    this.router.navigateByUrl('/addItem')
+    this.router.navigateByUrl('/addItem');
+  }
+
+  sellLog(){
+    this.router.navigateByUrl('/dayBook');
+  }
+
+  allProducts() {
+    this.router.navigateByUrl('/allItem')
   }
 
 }

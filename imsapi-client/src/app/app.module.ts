@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SellComponent } from './sell/sell.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AddItemComponent } from './add-item/add-item.component';
+import { DayBookComponent } from './day-book/day-book.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AddItemComponent } from './add-item/add-item.component';
     SearchBoxComponent,
     MessageComponent,
     SellComponent,
-    AddItemComponent
+    AddItemComponent,
+    DayBookComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

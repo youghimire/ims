@@ -14,27 +14,33 @@ import org.springframework.web.bind.annotation.RestController;
 public class SaleItemController {
 
 	@Autowired
-	private SaleItemService saleService;
+	private SaleItemService saleItemService;
+	@Autowired
+	private SaleService saleService;
 	
-
+	@RequestMapping("/saleItems")
+	public List<SaleItem> getSaleItems() {
+		return saleItemService.getAllSaleItem();
+	}
 
 	@RequestMapping("/saleItems/{id}")
 	public SaleItem getSaleItem(@PathVariable Integer id) {
-		return saleService.getSaleItem(id);
+		return saleItemService.getSaleItem(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/saleItems")
 	public void addSaleItem(@RequestBody SaleItem saleItem) {
-		saleService.addSaleItem(saleItem);
+		
+		saleItemService.addSaleItem(saleItem);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/saleItems/{id}")
 	public void updateSaleItem(@RequestBody SaleItem sale, @PathVariable Integer id) {
-		saleService.updateSaleItem(sale);
+		saleItemService.updateSaleItem(sale);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/saleItems/{id}")
 	public void deleteSaleItem(@PathVariable Integer id) {
-		saleService.deleteSaleItem(id);
+		saleItemService.deleteSaleItem(id);
 	}
 }

@@ -38,6 +38,7 @@ export class AddItemComponent implements OnInit {
   save() {
    this.newItem = Object.assign({}, this.newItemForm.value);
    this.itemService.saveItem(this.newItem);
+   this.newItemForm.reset();
   }
 
 }
