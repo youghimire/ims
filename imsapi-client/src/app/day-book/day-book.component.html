@@ -1,0 +1,27 @@
+<div class="card">
+
+  <H4 class="card-header">
+   Todays sales
+  </H4>
+  <div class="card-body">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let el of allSales">
+          <th scope="row">{{el.id}}</th>
+          <td >
+              <div *ngIf="el.saleItems[0]">{{el.saleItems[0].item.name}}</div>
+            </td>
+          <td>{{el.amount}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
