@@ -9,7 +9,7 @@ import { MessageComponent } from './message/message.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SellComponent } from './sell/sell.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AddItemComponent } from './add-item/add-item.component';
+import { ItemComponent } from './item/item.component';
 import { DayBookComponent } from './day-book/day-book.component';
 import { ProductListComponent } from './product-list/product-list.component';
 
@@ -20,7 +20,7 @@ import { ProductListComponent } from './product-list/product-list.component';
     SearchBoxComponent,
     MessageComponent,
     SellComponent,
-    AddItemComponent,
+    ItemComponent,
     DayBookComponent,
     ProductListComponent
   ],

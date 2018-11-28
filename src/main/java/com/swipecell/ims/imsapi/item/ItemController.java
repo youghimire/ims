@@ -31,14 +31,12 @@ public class ItemController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/items")
 	public void addItem(@RequestBody Item item) {
-		System.out.println("add Item " + item.getName());
-		itemService.addItem(item);
+		itemService.updateOrSave(item.getId(), item);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/items/{id}")
 	public void updateItem(@RequestBody Item item, @PathVariable Integer id) {
-		System.out.println("update Item " + item.getName());
-		itemService.updateItem(item);
+		itemService.updateOrSave(id, item);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/items/{id}")

@@ -48,19 +48,20 @@ public class ItemService {
 		return itemRepository.findOne(id);
 	}
 
-	public void addItem(Item item) {
-		itemRepository.save(item);
-	}
-
-	public void updateItem(Item item) {
-
-		itemRepository.save(item);
-	}
-
 	public void deleteItem(Integer id) {
 
 		itemRepository.delete(id);
 
+	}
+
+	public void updateOrSave(Integer id, Item item) {
+		if ( id != null && itemRepository.findOne(id) != null ) {
+			System.out.println("Item updated " + id);
+		} else {
+			System.out.println("Item inserted");
+		}
+		itemRepository.save(item);
+		
 	}
 
 }
