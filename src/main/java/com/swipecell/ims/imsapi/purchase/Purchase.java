@@ -2,13 +2,17 @@ package com.swipecell.ims.imsapi.purchase;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.CascadeType;
+
 
 import com.swipecell.ims.imsapi.distributor.Distributor;
 
@@ -18,7 +22,7 @@ public class Purchase {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@OneToOne
+	@ManyToOne
 	private Distributor distributor;
 	private String invoiceNo;
 	
@@ -26,8 +30,13 @@ public class Purchase {
 	private BigDecimal amount;
 	private Integer paymentMethod;
 	
-	static final int PAYMENT_BY_CASH = 0;
-	static final int PAYMENT_BY_CHEQUE = 1;
+	@OneToMany(mappedBy="purchase", cascade= CascadeType.PERSIST)
+	private Set<PurchaseItem> purchaseItems;
+	
+	
+	
+	static final int PAYMENT_BY_CHEQUE = 0;
+	static final int  PAYMENT_BY_CASH= 1;
 	static final int PAYMENT_BY_AFTER_SALES_CASH = 2;
 
 	public Purchase() {

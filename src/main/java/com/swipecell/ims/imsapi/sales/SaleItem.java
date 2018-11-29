@@ -31,16 +31,20 @@ import com.swipecell.ims.imsapi.item.Item;
 @Table(name="sale_item")
 public class SaleItem {
 
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private Integer quantity;
 	private BigDecimal amount;
 	private String remark;
 
-	
+	@ManyToOne
+    @JoinColumn(name = "item_id")
 	private Item item;
 
 	@JsonProperty(access = Access.WRITE_ONLY)
+	@ManyToOne
+    @JoinColumn(name = "sale_id")
 	private Sale sale;
 	
 
@@ -58,8 +62,7 @@ public class SaleItem {
 		this.sale = sale;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	public Integer getId() {
 		return id;
 	}
@@ -92,8 +95,7 @@ public class SaleItem {
 		this.remark = remark;
 	}
 
-	@ManyToOne
-    @JoinColumn(name = "item_id")
+	
 	public Item getItem() {
 		return item;
 	}
@@ -102,8 +104,7 @@ public class SaleItem {
 		this.item = item;
 	}
 
-	@ManyToOne
-    @JoinColumn(name = "sale_id")
+	
 	public Sale getSale() {
 		return sale;
 	}

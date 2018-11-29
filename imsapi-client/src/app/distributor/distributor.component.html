@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Distributor Detail</h4>
+  </div>
+  <div class="card-body">
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <label>Name<input formControlName="name" type="text" class="form-control"></label><br />
+      <label>Address<input formControlName="address" type="text" class="form-control"></label><br />
+      <label>Phone<input formControlName="phone" type="text" class="form-control"></label><br />
+      <label>Email<input formControlName="email" type="email" class="form-control"></label><br />
+      <label>Pan/Vat No<input formControlName="panOrVatNo" type="text" class="form-control"></label><br />
+      <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
+  </div>
+</div>

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Sale, SaleItem, Item } from './interfaces';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 @Injectable({
   providedIn: 'root'
 })

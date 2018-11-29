@@ -14,7 +14,7 @@
       <tbody>
         <tr *ngFor="let item of allItems">
           <th scope="row">{{item.id}}</th>
-          <a routerLink="/addItem/{{item.id}}">
+          <a routerLink="/editItem/{{item.id}}">
             <td>{{item.name}}</td>
           </a>
           <td>{{item.stock}}</td>

@@ -51,7 +51,7 @@ export class ItemService {
   }
 
   saveItem(item: Item) {
-    this.http.post<Item>(this.itemsURL,item).pipe(
+    this.http.post<Item>(this.itemsURL,item, httpOptions ).pipe(
       tap(_ => this.log(`Saved Item =${item.name}`)),
       catchError(this.handleError<Item>(`saveItem name: ${item.name}`))
     ).subscribe(()=>{})

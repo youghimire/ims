@@ -14,20 +14,27 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.swipecell.ims.imsapi.purchase.PurchaseItem;
 import com.swipecell.ims.imsapi.sales.SaleItem;
 
 
 @Entity
 public class Item {
 
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	private String name;
 	private String description;
 	private Integer stock;
 	
+	@OneToMany(mappedBy="item")
 	@JsonIgnore
 	private Set<SaleItem> saleItems;
+	
+	@OneToMany(mappedBy="item")
+	@JsonIgnore
+	private Set<PurchaseItem> purchaseItems;
 	
 	
 	
@@ -41,8 +48,7 @@ public class Item {
 		this.stock = stock;
 		this.saleItems = new HashSet<>();
 	}
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	public Integer getId() {
 		return id;
 	}
@@ -67,7 +73,7 @@ public class Item {
 	public void setStock(Integer stock) {
 		this.stock = stock;
 	}
-	@OneToMany(mappedBy="item")
+	
 	public Set<SaleItem> getSaleItems() {
 		return saleItems;
 	}

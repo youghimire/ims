@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ItemComponent } from './item/item.component';
 import { DayBookComponent } from './day-book/day-book.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { PurchaseComponent } from './purchase/purchase.component';
+import { DistributorComponent } from './distributor/distributor.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ProductListComponent } from './product-list/product-list.component';
     SellComponent,
     ItemComponent,
     DayBookComponent,
-    ProductListComponent
+    ProductListComponent,
+    PurchaseComponent,
+    DistributorComponent
   ],
   imports: [
     BrowserModule,

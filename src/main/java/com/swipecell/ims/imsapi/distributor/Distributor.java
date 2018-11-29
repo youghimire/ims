@@ -1,9 +1,16 @@
 package com.swipecell.ims.imsapi.distributor;
 
+import java.util.Map;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.swipecell.ims.imsapi.purchase.Purchase;
 
 @Entity
 public class Distributor {
@@ -16,6 +23,10 @@ public class Distributor {
 	private String phone;
 	private String email;
 	private String panOrVatNo;
+	
+	@JsonIgnore
+	@OneToMany
+	private Set<Purchase> purchases;
 
 	public Distributor() {
 
