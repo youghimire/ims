@@ -15,7 +15,7 @@
    
   .search-result li a {
     color: #888;
-    display: block;
+    /* display: block; */
     text-decoration: none;
   }
    

@@ -28,12 +28,7 @@ public class PurchaseController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/purchases")
 	public void addPurchase(@RequestBody Purchase purchase) {
-		purchaseService.addPurchase(purchase);
-	}
-
-	@RequestMapping(method = RequestMethod.PUT, value = "/purchases/{id}")
-	public void updatePurchase(@RequestBody Purchase purchase, @PathVariable Integer id) {
-		purchaseService.updatePurchase(purchase);
+		purchaseService.addOrUpdatePurchase(purchase);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/purchases/{id}")

@@ -7,6 +7,7 @@ import { DayBookComponent } from './day-book/day-book.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { DistributorComponent } from './distributor/distributor.component';
+import { PurchaseTableComponent } from './purchase-table/purchase-table.component';
 
 const routes: Routes = [
   { path: 'sell', component: SellComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'dayBook', component: DayBookComponent},
   {path: 'allItem', component: ProductListComponent},
   {path: 'purchase', component: PurchaseComponent},
-  {path: 'distributor', component: DistributorComponent}
+  {path: 'distributor', component: DistributorComponent},
+  {path: 'purchaseTable', component: PurchaseTableComponent}
 ];
 
 @NgModule({

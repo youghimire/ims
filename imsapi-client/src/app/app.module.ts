@@ -14,6 +14,9 @@ import { DayBookComponent } from './day-book/day-book.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { DistributorComponent } from './distributor/distributor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PurchaseTableComponent } from './purchase-table/purchase-table.component';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import { DistributorComponent } from './distributor/distributor.component';
     DayBookComponent,
     ProductListComponent,
     PurchaseComponent,
-    DistributorComponent
+    DistributorComponent,
+    PurchaseTableComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,15 @@ import { DistributorComponent } from './distributor/distributor.component';
     HttpClientModule,
     NgbModule.forRoot(),
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   providers: [
   ],

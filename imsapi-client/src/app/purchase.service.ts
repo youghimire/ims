@@ -28,6 +28,13 @@ export class PurchaseService {
       ).subscribe(()=>{}
       )
     }
+
+    getPurchases() : Observable<Purchase[]> {
+      return this.http.get<Purchase[]>(this.purchaseUrl).pipe(
+        tap(_ => this.log('Retrieved Purchases')),
+        catchError(this.handleError<Purchase[]>('getPurchase'))
+      )
+    }
     saveDistributor(distributor: Distributor) {
       this.http.post<Distributor>(this.distributorUrl, distributor, httpOptions).pipe(
         tap(_ => this.log(`Saved Distributor ${distributor.name}`)),

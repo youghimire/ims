@@ -1,7 +1,9 @@
 package com.swipecell.ims.imsapi.purchase;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -30,8 +32,8 @@ public class Purchase {
 	private BigDecimal amount;
 	private Integer paymentMethod;
 	
-	@OneToMany(mappedBy="purchase", cascade= CascadeType.PERSIST)
-	private Set<PurchaseItem> purchaseItems;
+	@OneToMany(mappedBy="purchase")
+	private List<PurchaseItem> purchaseItems;
 	
 	
 	
@@ -104,6 +106,22 @@ public class Purchase {
 		this.paymentMethod = paymentMethod;
 	}
 
+
+	public List<PurchaseItem> getPurchaseItems() {
+		return purchaseItems;
+	}
+
+
+	public void setPurchaseItems(List<PurchaseItem> purchaseItems) {
+		this.purchaseItems = purchaseItems;
+	}
+
+	public void addPurchaseItem( PurchaseItem purchaseItem) {
+		if ( this.purchaseItems == null ) {
+			this.purchaseItems = new ArrayList<PurchaseItem>();
+		}
+		this.purchaseItems.add(purchaseItem);
+	}
 	
 
 	

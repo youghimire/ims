@@ -28,11 +28,23 @@
           <div class="card-header">Item {{i + 1}}<i class="fas fa-plus float-right"></i></div>
           <div [formGroupName]="i" class="card-body">
 
-            <label>Item<input formControlName="item" type="text" class="form-control"></label>
+            <label>Item
+              <input matInput formControlName="item" #searchBox class="form-control" [matAutocomplete]="auto" (input)="search(searchBox.value)">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let item of items$ | async" [value]="item">
+                 {{ item.name }}
+                </mat-option>
+            </mat-autocomplete>
+            <!-- <ul class="search-result">
+                <li  *ngFor='let item of items$ | async' class="form-control">
+                      {{item.name}}
+                  </li>
+            </ul> -->
+          </label>
 
             <label>Quantity<input formControlName="quantity" type="text" class="form-control"></label>
 
-            <label>Amount<input formControlName="amount" type="text" class="form-control"></label>
+            <label>Unit Amount<input formControlName="amount" type="text" class="form-control"></label>
 
           </div>
         </div>
