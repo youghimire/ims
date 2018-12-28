@@ -10,7 +10,7 @@ import { Sale } from '../interfaces';
 export class DayBookComponent implements OnInit {
 
   headElements = ["#", "Item", "Amount"];
-  allSales : Sale[];
+  sales : Sale[];
   constructor(
     private saleService : SellService
   ) { }
@@ -22,6 +22,6 @@ export class DayBookComponent implements OnInit {
 
   getSales() {
     this.saleService.getTodaysSell()
-    .subscribe(sales => this.allSales = sales)
+    .subscribe(sales => this.sales = sales)
   }
 }

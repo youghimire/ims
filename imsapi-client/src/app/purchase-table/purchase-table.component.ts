@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
-import { PurchaseTableDataSource } from './purchase-table-datasource';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { PurchaseService } from '../purchase.service';
+import { Purchase } from '../interfaces';
+import { PurchaseTableDataSource } from './purchase-table-datasource';
 
 @Component({
   selector: 'app-purchase-table',
@@ -11,13 +12,18 @@ import { PurchaseService } from '../purchase.service';
 export class PurchaseTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: PurchaseTableDataSource;
-  purchaseService: PurchaseService;
+ 
+  dataSource : PurchaseTableDataSource;
+  
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'Item name', 'Price per unit', 'Quantity', 'Distributor', 'Invoice No'];
+  displayedColumns = ['name', 'amount', 'quantity', 'date', 'distributor', 'invoiceNo'];
+
+  constructor(private purchaseService: PurchaseService){}
 
   ngOnInit() {
+    console.log("on init")
     this.dataSource = new PurchaseTableDataSource(this.paginator, this.sort, this.purchaseService);
+  
   }
+
 }

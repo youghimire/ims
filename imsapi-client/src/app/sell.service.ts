@@ -20,11 +20,6 @@ export class SellService {
   ) { }
 
   saveSale(sale : Sale, item: Item): Observable<Sale> {
-    const saleItem = {} as SaleItem;
-    saleItem.item = item;
-    sale.saleItems = new Array<SaleItem>();
-    sale.saleItems.push(saleItem)
-
     return this.http.post<Sale>(this.salesURL, sale).pipe(
       tap(_ => this.log(`Saved Item =${sale.billName}`)),
       catchError(this.handleError<Sale>(`saveItem name: ${sale.billName}`))

@@ -1,9 +1,10 @@
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Purchase } from '../interfaces';
 import { PurchaseService } from '../purchase.service';
+import { OnInit } from '@angular/core';
 
 
 /**
@@ -11,12 +12,14 @@ import { PurchaseService } from '../purchase.service';
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class PurchaseTableDataSource extends DataSource<Purchase> {
+export class PurchaseTableDataSource implements DataSource<Purchase> {
 
-  purchases : Observable<Purchase[]> = this.purchaseService.getPurchases();
-  data : Purchase[];
   constructor(private paginator: MatPaginator, private sort: MatSort, private purchaseService: PurchaseService) {
-    super();
+   
+  }
+
+  ngOnInit() {
+   
   }
 
   /**
@@ -27,27 +30,27 @@ export class PurchaseTableDataSource extends DataSource<Purchase> {
   connect(): Observable<Purchase[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
+    let purchases = this.purchaseService.getPurchases();
+    return purchases;
     const dataMutations = [
-      this.purchases,
+      purchases,
       this.paginator.page,
       this.sort.sortChange
     ];
-
-    this.data = this.getData(this.purchases);
 
     // Set the paginator's length
     this.paginator.length = 20;
 
     return merge(...dataMutations).pipe(map(() => {
-      return this.getPagedData(this.getSortedData(this.data));
+      return this.getData(purchases);
     }));
   }
 
-  getData(purchases: Observable<Purchase[]>) : Purchase[] {
-    purchases.subscribe(
-      value => {return value as Purchase[];}
-    )
-    return new Array<Purchase>();
+  getData(purchases: Observable<Purchase[]>): Purchase[] {
+    
+    let data: Purchase[];
+    purchases.subscribe(x=> {data= x});
+    return data;
   }
   /**
    *  Called when the table is being destroyed. Use this function, to clean up

@@ -1,3 +1,21 @@
-<app-store-name></app-store-name>
-<router-outlet></router-outlet>
-<app-message></app-message>
+
+
+<mat-sidenav-container fullscreen >
+    <mat-sidenav mode="side" role="navigation" opened >
+    <mat-nav-list>
+            <a mat-list-item routerLink='/addItem'>Add Item</a>
+            <a mat-list-item routerLink='/dayBook'>Day Book</a>
+            <a mat-list-item routerLink='/allItem'>All Item</a>
+            <a mat-list-item routerLink='/purchaseTable'>Purchase List</a>
+            <a mat-list-item routerLink='/purchase'>Purchase entry</a>
+            <a mat-list-item routerLink='/sell'>Sell entry</a>
+            <a mat-list-item routerLink='distributor'>Add Distributor</a>
+    </mat-nav-list>
+</mat-sidenav>
+    <mat-sidenav-content>
+            <app-store-name></app-store-name>
+        <router-outlet></router-outlet>
+        <app-message></app-message>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+

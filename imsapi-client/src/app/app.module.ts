@@ -16,7 +16,9 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { DistributorComponent } from './distributor/distributor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PurchaseTableComponent } from './purchase-table/purchase-table.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatButtonModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule,
+   MatAutocompleteModule, MatFormFieldModule, MatButtonModule, MatSidenav, MatSidenavModule, MatListModule } from '@angular/material';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatA
     ProductListComponent,
     PurchaseComponent,
     DistributorComponent,
-    PurchaseTableComponent
+    PurchaseTableComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,9 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatA
     MatInputModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [
   ],

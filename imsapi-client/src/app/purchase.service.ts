@@ -14,8 +14,8 @@ const httpOptions = {
 })
 export class PurchaseService {
 
-  private distributorUrl = "/api/distributors";
-  private purchaseUrl = "/api/purchases";
+  private distributorUrl = '/api/distributors';
+  private purchaseUrl = '/api/purchases';
   constructor(
     private http: HttpClient,
     private messageService: MessageService

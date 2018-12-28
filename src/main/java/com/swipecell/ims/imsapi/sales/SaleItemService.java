@@ -22,8 +22,8 @@ public class SaleItemService {
 		return saleItemRepository.findOne(id);
 	}
 
-	public void addSaleItem(SaleItem saleItem) {
-		saleItemRepository.save(saleItem);
+	public SaleItem addSaleItem(SaleItem saleItem) {
+		return saleItemRepository.save(saleItem);
 	}
 
 	public void updateSaleItem(SaleItem saleItem) {

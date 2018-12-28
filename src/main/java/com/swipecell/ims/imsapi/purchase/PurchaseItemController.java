@@ -16,6 +16,10 @@ public class PurchaseItemController {
 	@Autowired
 	private PurchaseItemService purchaseItemService;
 
+	@RequestMapping("/purchaseItems")
+	public List<PurchaseItem> getAllPurchaseItems() {
+		return purchaseItemService.getAllPurchaseItem();
+	}
 	@RequestMapping("/purchase/{purchaseId}/purchaseItems")
 	public List<PurchaseItem> getAllPurchaseItem(@PathVariable Integer purchaseId) {
 		return purchaseItemService.getAllPurchaseItem(purchaseId);

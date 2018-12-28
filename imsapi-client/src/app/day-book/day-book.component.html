@@ -12,12 +12,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let el of allSales">
-          <th scope="row">{{el.id}}</th>
+        <tr *ngFor="let sale of sales; let i=index">
+          <th scope="row">{{i + 1}}</th>
           <td >
-              <div *ngIf="el.saleItems[0]">{{el.saleItems[0].item.name}}</div>
+              <div *ngIf="sale.saleItems[0]">{{sale.saleItems[0].item.name}}</div>
             </td>
-          <td>{{el.amount}}</td>
+          <td>{{sale.amount}}</td>
           
         </tr>
       </tbody>

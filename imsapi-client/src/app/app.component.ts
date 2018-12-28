@@ -9,12 +9,12 @@ import { Item } from './interfaces';
 })
 export class AppComponent implements OnInit {
   title = 'Inventory Management System';
-  
+
   constructor(private itemService: ItemService) {
 
   }
 
   ngOnInit() {
-     
+
   }
 }

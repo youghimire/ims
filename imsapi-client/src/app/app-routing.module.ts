@@ -8,19 +8,21 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { DistributorComponent } from './distributor/distributor.component';
 import { PurchaseTableComponent } from './purchase-table/purchase-table.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  { path: 'sell', component: SellComponent },
+  {path: 'sell', component: SellComponent },
   {path: 'sell/:id', component: SellComponent},
   {path: 'search', component: SearchBoxComponent},
-  {path: '', redirectTo: '/search', pathMatch: 'full'},
+  {path: '', redirectTo: '/dayBook', pathMatch: 'full'},
   {path: 'addItem', component: ItemComponent},
   {path: 'editItem/:id', component: ItemComponent},
   {path: 'dayBook', component: DayBookComponent},
   {path: 'allItem', component: ProductListComponent},
   {path: 'purchase', component: PurchaseComponent},
   {path: 'distributor', component: DistributorComponent},
-  {path: 'purchaseTable', component: PurchaseTableComponent}
+  {path: 'purchaseTable', component: PurchaseTableComponent},
+  {path: 'test', component: TestComponent}
 ];
 
 @NgModule({

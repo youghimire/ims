@@ -10,7 +10,7 @@ import { element } from 'protractor';
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
-  styleUrls: ['./purchase.component.css', '../search-box/search-box.component.css']
+  styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
 

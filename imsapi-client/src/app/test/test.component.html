@@ -1,0 +1,5 @@
+<form [formGroup]="saleItemForm" (ngSubmit)="save()" novalidate>
+<input formControlName="amount" type="number">
+<app-search-box [parentForm]="saleItemForm"></app-search-box>
+<button type="submit">Save</button>
+</form>

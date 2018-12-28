@@ -1,42 +1,49 @@
-
-<div class="card" *ngIf="item">
-    <div class="card-header">
-      Bill Selected Item
-    </div>
+<div class="card">
+  <div class="card-header">
+    Bill Items
+  </div>
   <div class="card-body">
+    <form [formGroup]="saleForm" (ngSubmit)="save()" novalidate>
 
-    <h5 class="card-title">
-      {{item.name}}
-    </h5>
-    <p class="card-text" *ngIf="item.description">
-      {{item.description}}
-    </p>
 
-    <form [formGroup]="billingForm" (ngSubmit)="save()" novalidate>
-        <div class="form-group">
-          <label for="billNameInput">Customer Name:
-            <input id="billNameInput" type="text" class="form-control" formControlName="billName">
-          </label>
+      <div class="form-group">
+
+        <input type="text" class="form-control" formControlName="billName" placeholder="Customer">
+
+      </div>
+
+      <div formArrayName="saleItems">
+
+        <div *ngFor="let purchaseItemForm of saleForm.controls.saleItems.controls; let i=index" class="card">
+          <div class="card-header">Item {{i + 1}}<i *ngIf="i!=0" (click)="delteItem(i)" class="material-icons float-right">clear</i></div>
+          <div [formGroupName]="i" class="card-body form-group">
+
+            <app-search-box [parentForm]="purchaseItemForm"></app-search-box>
+
+
+            <input matInput formControlName="quantity" type="text" placeholder="Quantity" (input)="calculateTotal()">
+
+            <input matInput formControlName="amount" type="number" placeholder="Amount" (input)="calculateTotal()">
+
+          </div>
         </div>
-      
-        <div class="form-group">
-          <label for="billAmountInput">Bill Amount:
-            <input id="billAmountInput" type="number" class="form-control" formControlName="amount">
-          </label>
-        </div>
-        <div class="form-group">
-          <label for="remarkInput">Remark:
-            <textarea id="remarkTextArea" type="text" class="form-control" rows="2" formControlName="remark"></textarea>
-          </label>
-        </div>
-      
-        <button type="submit" class="btn btn-primary" [disabled]="!billingForm.valid">Confirm</button>
-      
-      </form>
+        
+      </div>
+      <i (click)="addItem()" class="fas fa-plus float-right"></i>
+      <div class="form-group">
+        <label for="billAmountInput">Bill Amount:
+          <input id="billAmountInput" type="number" class="form-control" formControlName="amount">
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="remarkInput">Remark:
+          <textarea id="remarkTextArea" type="text" class="form-control" rows="2" formControlName="remark"></textarea>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!saleForm.valid">Confirm</button>
+
+    </form>
 
   </div>
-</div>
-
-<div>
-
 </div>

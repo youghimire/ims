@@ -9,7 +9,8 @@ export class MessageService {
   constructor() { }
 
   add(message: string) {
-    this.messages.push(message);
+    console.log(message);
+    // this.messages.push(message);
   }
 
   clear() {

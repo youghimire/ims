@@ -29,9 +29,9 @@ public class SaleItemController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/saleItems")
-	public void addSaleItem(@RequestBody SaleItem saleItem) {
+	public SaleItem addSaleItem(@RequestBody SaleItem saleItem) {
 		
-		saleItemService.addSaleItem(saleItem);
+		return saleItemService.addSaleItem(saleItem);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/saleItems/{id}")
