@@ -1,38 +1,46 @@
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
-import { Observable, merge } from 'rxjs';
-import { Purchase } from '../interfaces';
-import { PurchaseService } from '../purchase.service';
-import { OnInit } from '@angular/core';
-import {from} from 'rxjs/observable/from'
+import { Observable, of as observableOf, merge, of } from 'rxjs';
+import { Item } from '../interfaces';
+import { ItemService } from '../item.service';
+import { getViewData } from '@angular/core/src/render3/state';
 
 
 /**
- * Data source for the PurchaseTable view. This class should
+ * Data source for the ProductTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class PurchaseTableDataSource extends DataSource<Purchase> {
+export class ProductTableDataSource extends DataSource<Item> {
+  data: Observable<Item[]> = this.itemService.getAllItems();
+ dataArray : Item[];
 
-  data: Observable<Purchase[]> = this.purchaseService.getPurchases();
-  dataArray : Purchase[];
-  constructor(private paginator: MatPaginator, private sort: MatSort, private purchaseService: PurchaseService) {
+  constructor(private itemService: ItemService, private paginator: MatPaginator, private sort: MatSort) {
     super();
   }
 
-  ngOnInit() {
-   
+  getData() {
+    
+   this.data.forEach(element => {
+    
+    this.dataArray= element;
+  })
+  
   }
-
-
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    
+  }
   /**
    * Connect this data source to the table. The table will only update when
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Purchase[]> {
-    this.dataArray = this.getData(this.data);
+  connect(): Observable<Item[]> {
+    
+    this.getData();
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
@@ -49,24 +57,18 @@ export class PurchaseTableDataSource extends DataSource<Purchase> {
     }));
   }
 
-  getData(purchases: Observable<Purchase[]>): Purchase[] {
-    
-    let data: Purchase[];
-    purchases.subscribe(x=> {data= x});
-    return data;
-  }
+
   /**
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect() {
-  }
+  disconnect() {}
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Purchase[]) {
+  private getPagedData(data: Item[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -75,18 +77,24 @@ export class PurchaseTableDataSource extends DataSource<Purchase> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Purchase[]) {
+  private getSortedData(data: Item[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
 
     return data.sort((a, b) => {
+      let column = this.sort.active;
+      let valuea = a[column];
+      let valueb = b[column];
       const isAsc = this.sort.direction === 'asc';
-      switch (this.sort.active) {
-        case 'invoiceNo': return compare(a.invoiceNo, b.invoiceNo, isAsc);
-        case 'id': return compare(+a.id, +b.id, isAsc);
-        default: return 0;
-      }
+         console.log(typeof valuea)
+        if (typeof valuea === "number") {
+          return compare(+valuea, +valueb, isAsc);
+        } else {
+          
+          return compare( valuea, valueb, isAsc);
+        }
+       
     });
   }
 }

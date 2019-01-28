@@ -15,7 +15,6 @@ import { Router } from '@angular/router'
 export class SellComponent implements OnInit {
 
   saleForm: FormGroup;
-  item: Item;
   newSale: Sale;
   newSaleItem: SaleItem;
 
@@ -31,8 +30,6 @@ export class SellComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getItem();
-
   }
 
   createFormGroup() {
@@ -54,29 +51,17 @@ export class SellComponent implements OnInit {
       item: [null, Validators.required]
     })
   }
-  getItem(): void {
-    if (this.route.snapshot.paramMap.has('id')) {
-      const id = +this.route.snapshot.paramMap.get('id');
-
-      this.itemService.getItem(id)
-        .subscribe(item => this.item = item);
-    }
-  }
 
   save() {
-
     this.newSale = Object.assign({}, this.saleForm.value);
-    if (this.newSale.saleItems) {
-      console.log("saved")
-      this.sellService.saveSale(this.newSale, this.item)
-        .subscribe(sale => {
-          this.newSale = sale;
-          // this.router.navigateByUrl('/dayBook')});
-        });
-    } else {
-      console.log("No sale")
-    }
+
+    this.sellService.saveSale(this.newSale)
+      .subscribe(sale => {
+        this.newSale = sale;
+        this.router.navigateByUrl('/dayBook');
+      });
   }
+
   addItem() {
     const saleItemsFormArray = this.saleForm.controls.saleItems as FormArray;
     saleItemsFormArray.push(this.createSaleItemForm());

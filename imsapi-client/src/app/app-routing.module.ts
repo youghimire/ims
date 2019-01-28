@@ -9,6 +9,7 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { DistributorComponent } from './distributor/distributor.component';
 import { PurchaseTableComponent } from './purchase-table/purchase-table.component';
 import { TestComponent } from './test/test.component';
+import { ProductTableComponent } from './product-table/product-table.component';
 
 const routes: Routes = [
   {path: 'sell', component: SellComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'purchase', component: PurchaseComponent},
   {path: 'distributor', component: DistributorComponent},
   {path: 'purchaseTable', component: PurchaseTableComponent},
-  {path: 'test', component: TestComponent}
+  {path: 'test', component: TestComponent},
+  {path: 'productTable', component: ProductTableComponent}
 ];
 
 @NgModule({

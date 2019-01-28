@@ -19,7 +19,7 @@ export class SellService {
     private messageService: MessageService
   ) { }
 
-  saveSale(sale : Sale, item: Item): Observable<Sale> {
+  saveSale(sale : Sale): Observable<Sale> {
     return this.http.post<Sale>(this.salesURL, sale).pipe(
       tap(_ => this.log(`Saved Item =${sale.billName}`)),
       catchError(this.handleError<Sale>(`saveItem name: ${sale.billName}`))

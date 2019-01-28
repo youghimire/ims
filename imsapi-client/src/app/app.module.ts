@@ -19,6 +19,7 @@ import { PurchaseTableComponent } from './purchase-table/purchase-table.componen
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule,
    MatAutocompleteModule, MatFormFieldModule, MatButtonModule, MatSidenav, MatSidenavModule, MatListModule } from '@angular/material';
 import { TestComponent } from './test/test.component';
+import { ProductTableComponent } from './product-table/product-table.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TestComponent } from './test/test.component';
     PurchaseComponent,
     DistributorComponent,
     PurchaseTableComponent,
-    TestComponent
+    TestComponent,
+    ProductTableComponent
   ],
   imports: [
     BrowserModule,
