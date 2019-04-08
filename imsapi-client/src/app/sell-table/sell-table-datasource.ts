@@ -1,27 +1,27 @@
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort } from '@angular/material';
 import { map } from 'rxjs/operators';
-import { Observable, merge } from 'rxjs';
-import { Purchase } from '../interfaces';
-import { PurchaseService } from '../purchase.service';
-import { OnInit } from '@angular/core';
-import {from} from 'rxjs/observable/from'
-
+import { Observable, of as observableOf, merge } from 'rxjs';
+import { Sale } from '../interfaces';
+import { SellService } from '../sell.service';
+import { connect } from 'http2';
 
 /**
- * Data source for the PurchaseTable view. This class should
+ * Data source for the SellTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class PurchaseTableDataSource extends DataSource<Purchase> {
-
-  data: Observable<Purchase[]> = this.purchaseService.getPurchases();
-  dataArray : Purchase[];
-  constructor(private paginator: MatPaginator, private sort: MatSort, private purchaseService: PurchaseService) {
-    super();
-  }
-  getData() {
-    
+export class SellTableDataSource extends DataSource<Sale> {
+  data: Observable<Sale[]> = this.sellService.getTodaysSell();
+  dataArray : Sale[] = new Array<Sale>();
+  dayBook: boolean = false;
+ 
+   constructor(private sellService: SellService, private paginator: MatPaginator, private sort: MatSort) {
+     super();
+   }
+ 
+   getData() {
+     
     this.data.forEach(element => {
      
      this.dataArray= element;
@@ -38,7 +38,7 @@ export class PurchaseTableDataSource extends DataSource<Purchase> {
     * the returned stream emits new items.
     * @returns A stream of the items to be rendered.
     */
-   connect(): Observable<Purchase[]> {
+   connect(): Observable<Sale[]> {
      
      this.getData();
      // Combine everything that affects the rendered data into one update
@@ -57,6 +57,24 @@ export class PurchaseTableDataSource extends DataSource<Purchase> {
      }));
    }
  
+   isTodaysSale(sale: Sale) {
+    
+     if ( sale.date ) {
+     return sale.date.toDateString() === new Date().toDateString();
+     }
+     return false;
+   }
+
+   filter() {
+    // if ( this.dayBook) {
+    //   return this.data.filter(this.isTodaysSale);
+    // }
+    // return data;
+   }
+   dayBookToggle() {
+    this.dayBook = !this.dayBook;
+    this.connect();
+   } 
  
    /**
     *  Called when the table is being destroyed. Use this function, to clean up
@@ -68,7 +86,7 @@ export class PurchaseTableDataSource extends DataSource<Purchase> {
     * Paginate the data (client-side). If you're using server-side pagination,
     * this would be replaced by requesting the appropriate data from the server.
     */
-   private getPagedData(data: Purchase[]) {
+   private getPagedData(data: Sale[]) {
      const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
      return data.splice(startIndex, this.paginator.pageSize);
    }
@@ -77,7 +95,7 @@ export class PurchaseTableDataSource extends DataSource<Purchase> {
     * Sort the data (client-side). If you're using server-side sorting,
     * this would be replaced by requesting the appropriate data from the server.
     */
-   private getSortedData(data: Purchase[]) {
+   private getSortedData(data: Sale[]) {
      if (!this.sort.active || this.sort.direction === '') {
        return data;
      }
@@ -103,4 +121,3 @@ export class PurchaseTableDataSource extends DataSource<Purchase> {
  function compare(a, b, isAsc) {
    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
  }
- 

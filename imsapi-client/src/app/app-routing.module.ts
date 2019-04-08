@@ -10,21 +10,27 @@ import { DistributorComponent } from './distributor/distributor.component';
 import { PurchaseTableComponent } from './purchase-table/purchase-table.component';
 import { TestComponent } from './test/test.component';
 import { ProductTableComponent } from './product-table/product-table.component';
+import { SellTableComponent } from './sell-table/sell-table.component';
 
 const routes: Routes = [
-  {path: 'sell', component: SellComponent },
-  {path: 'sell/:id', component: SellComponent},
-  {path: 'search', component: SearchBoxComponent},
-  {path: '', redirectTo: '/dayBook', pathMatch: 'full'},
+  {path: '', redirectTo: '/productTable', pathMatch: 'full'},
+
   {path: 'addItem', component: ItemComponent},
   {path: 'editItem/:id', component: ItemComponent},
-  {path: 'dayBook', component: DayBookComponent},
+  {path: 'productTable', component: ProductTableComponent},
   {path: 'allItem', component: ProductListComponent},
-  {path: 'purchase', component: PurchaseComponent},
+  {path: 'search', component: SearchBoxComponent},
+
   {path: 'distributor', component: DistributorComponent},
+  {path: 'purchase', component: PurchaseComponent},
   {path: 'purchaseTable', component: PurchaseTableComponent},
-  {path: 'test', component: TestComponent},
-  {path: 'productTable', component: ProductTableComponent}
+
+  {path: 'sell', component: SellComponent },
+  {path: 'sell/:id', component: SellComponent},    
+  {path: 'dayBook', component: DayBookComponent},
+  {path: 'sellTable', component: SellTableComponent},
+  
+  {path: 'test', component: TestComponent}
 ];
 
 @NgModule({

@@ -16,6 +16,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
     <mat-option *ngFor="let item of items$ | async" [value]="item">
       {{ item.name }}
+     
     </mat-option>
   </mat-autocomplete>
 </span>`

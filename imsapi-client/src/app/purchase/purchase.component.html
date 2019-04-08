@@ -4,12 +4,14 @@
 
     <form [formGroup]="purchaseForm" (ngSubmit)="save()" novalidate>
       <div formGroupName="distributor">
-        <label>
+        <label>Distributor
+          <span>
           <select formControlName="id" class="form-control">
             <option *ngFor="let distributor of distributors" [value]=distributor.id>
               {{distributor.name}}
             </option>
-          </select>
+          </select><a [routerLink]="[ '/distributor' ]">Add</a>
+        </span>
         </label><br />
       </div>
 
